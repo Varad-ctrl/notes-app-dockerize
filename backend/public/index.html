@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Notely — Your Personal Workspace</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <div class="app">
+
+    <!-- Header -->
+    <div class="header">
+
+      <div class="logo">
+
+        <div class="logo-icon">
+          📝
+        </div>
+
+        <div>
+          <h1>Notely</h1>
+          <span>
+            Your personal workspace
+          </span>
+        </div>
+
+      </div>
+
+      <div class="header-right">
+        <div class="stat-pill" id="noteCount">
+
+          0 notes
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Search -->
+    <div class="search-bar">
+
+      <div class="search-icon">
+        🔍
+      </div>
+
+      <input type="text" id="searchInput" placeholder="Search notes..." />
+    </div>
+
+    <!-- Layout -->
+    <div class="layout">
+
+      <!-- Add Note Form -->
+      <div class="form-panel">
+
+        <h2>
+          <span></span>
+          New note
+        </h2>
+
+        <div class="field">
+
+          <label>
+            Title
+          </label>
+
+          <input type="text" id="titleInput" placeholder="Give it a title..." maxlength="80" />
+
+        </div>
+
+        <div class="field">
+
+          <label>
+            Content
+          </label>
+
+          <textarea id="contentInput" placeholder="Start writing..." maxlength="500"
+            oninput="updateCharCount()"></textarea>
+
+          <div class="char-count" id="charCount">
+
+            0 / 500
+
+          </div>
+
+        </div>
+
+        <div class="field">
+
+          <label>
+            Category
+          </label>
+
+          <input type="text" id="tagInput" placeholder="e.g. Work, Personal..." maxlength="30" />
+
+        </div>
+
+        <!-- Color Picker -->
+        <div class="field">
+
+          <label>
+            Color
+          </label>
+
+          <div class="color-picker-row">
+
+            <div class="color-dot" data-color="#fff0f7" data-border="#f4b3d5" style="background:#fff0f7">
+            </div>
+
+            <div class="color-dot" data-color="#eafaf1" data-border="#6bd69f" style="background:#eafaf1">
+            </div>
+
+            <div class="color-dot" data-color="#eef7ff" data-border="#73b5ff" style="background:#eef7ff">
+            </div>
+
+          </div>
+
+        </div>
+
+        <button class="add-btn" id="addBtn">
+
+          + Add Note
+
+        </button>
+
+      </div>
+
+      <!-- Notes Area -->
+      <div class="notes-area">
+
+        <div class="filters" id="filterBtns">
+
+          <button class="filter-btn active">
+            All
+          </button>
+
+        </div>
+
+        <div class="sort-row">
+
+          <label>
+            Sort by
+          </label>
+
+          <select onchange="renderNotes()" id="sortSelect">
+
+            <option value="newest">
+              Newest first
+            </option>
+
+            <option value="oldest">
+              Oldest first
+            </option>
+
+            <option value="title">
+              Title A–Z
+            </option>
+
+            <option value="pinned">
+              Pinned first
+            </option>
+
+          </select>
+
+        </div>
+
+        <h3>
+          Notes
+          <small id="visibleCount">
+            0 shown
+          </small>
+        </h3>
+
+        <div class="notes-grid" id="notesGrid">
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast">
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
